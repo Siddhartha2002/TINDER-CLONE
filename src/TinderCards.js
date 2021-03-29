@@ -1,13 +1,13 @@
 import React, { useState } from "react";
 import "./TinderCards.css";
+import TinderCard from "react-tinder-card";
 
 function TinderCards() {
   // Way to deeclare a variable in react
   const [people, setPeople] = useState([
     {
       name: "Steve Jobs",
-      url:
-        "https://cdn.vox-cdn.com/thumbor/DVN7eqE1o8HeBOP-jg15YHTsiLY=/0x0:640x427/1200x800/filters:focal(0x0:640x427)/cdn.vox-cdn.com/assets/1496753/stevejobs.jpg",
+      url: "http://anthillonline.com/wp-content/uploads/2016/03/steve-jobs.jpg",
     },
     {
       name: "Mark Zuckerburg",
@@ -19,14 +19,18 @@ function TinderCards() {
   return (
     <div className="tinderCards">
       {people.map((person) => (
-        <TinderCards>
+        <TinderCard
+          className="swipe"
+          key={person.name}
+          preventSwipe={["up", "down"]}
+        >
           <div
             style={{ backgroundImage: `url(${person.url})` }}
             className="card"
           >
             <h3>{person.name}</h3>
           </div>
-        </TinderCards>
+        </TinderCard>
       ))}
     </div>
   );
